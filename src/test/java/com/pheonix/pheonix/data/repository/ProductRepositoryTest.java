@@ -63,5 +63,17 @@ class ProductRepositoryTest {
         assertThat(productList).isNotNull();
         assertThat(productList.size()).isEqualTo(4);
     }
+    @Test
+    @DisplayName("find product by name")
+    void findProductByName(){
+        Product product = productRepository.findByName("Luxury Mop").orElse(null);
+        assertThat(product).isNotNull();
+        assertThat(product.getId()).isEqualTo(12);
+        assertThat(product.getName()).isEqualTo("Luxury Mop");
+        assertThat(product.getPrice()).isEqualTo(2430);
+        assertThat(product.getQuantity()).isEqualTo(3);
+        log.info("product retrieve :: {}", product);
+
+    }
 
 }
