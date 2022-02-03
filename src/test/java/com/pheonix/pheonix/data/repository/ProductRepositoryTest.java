@@ -41,5 +41,18 @@ class ProductRepositoryTest {
 
 
     }
+    @Test
+    @DisplayName("find existing product from database")
+    void findExistingProduct(){
+       // (12, 'Luxury Mop', 2430, 3
+        Product product = productRepository.findById(12L).orElse(null);
+        assertThat(product).isNotNull();
+        assertThat(product.getId()).isEqualTo(12);
+        assertThat(product.getName()).isEqualTo("Luxury Mop");
+        assertThat(product.getPrice()).isEqualTo(2430);
+        assertThat(product.getQuantity()).isEqualTo(3);
+        //log.info("product retr")
+
+    }
 
 }
