@@ -10,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
@@ -53,6 +55,13 @@ class ProductRepositoryTest {
         assertThat(product.getQuantity()).isEqualTo(3);
         //log.info("product retr")
 
+    }
+    @Test
+    @DisplayName("find all product in the database")
+    void findAllProductIntheDatabase(){
+        List<Product> productList = productRepository.findAll();
+        assertThat(productList).isNotNull();
+        assertThat(productList.size()).isEqualTo(4);
     }
 
 }
