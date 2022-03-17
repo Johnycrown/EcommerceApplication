@@ -1,5 +1,6 @@
 package com.pheonix.pheonix.data.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -19,6 +20,7 @@ public class Product{
     private  int quantity;
     private double price;
     @CreationTimestamp
+    @JsonFormat(pattern = "yyyy-MM-ss-HH-mm-ss")
     private LocalDateTime datecreated;
     private String imageUrl;
 
