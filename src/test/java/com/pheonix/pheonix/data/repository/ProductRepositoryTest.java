@@ -12,6 +12,7 @@ import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
@@ -73,6 +74,23 @@ class ProductRepositoryTest {
         assertThat(product.getPrice()).isEqualTo(2430);
         assertThat(product.getQuantity()).isEqualTo(3);
         log.info("product retrieve :: {}", product);
+
+    }
+    @Test
+    @DisplayName("update product")
+    void updateProductAttreibuteTest(){
+        //check product exist
+        Product savedProduct = productRepository.findByName("Luxury Mop").orElse(null);
+        assertThat(savedProduct).isNotNull();
+        //update Product
+        assertThat(savedProduct.getName()).isEqualTo("Luxury Mop");
+        assertThat(savedProduct.getPrice()).isEqualTo(2430);
+        savedProduct.setName("Luxury Mop update");
+        savedProduct.setPrice(123457);
+        //save Product
+        productRepository.save(savedProduct);
+        assertThat(savedProduct.getName()).isEqualTo("Luxury Mop update");
+        assertThat(savedProduct.getPrice()).isEqualTo(123457);
 
     }
 
