@@ -8,5 +8,5 @@ import java.util.Map;
 
 public interface CloudinaryService {
    // Map<?,?> upload(File file, Map<?,?> paramd) throws IOException;
-    public Map<?, ?> upload(byte[] bytes, Map<?, ?> params) throws IOException;
+     Map<?, ?> upload(byte[] bytes, Map<?, ?> params) throws IOException;
 }
